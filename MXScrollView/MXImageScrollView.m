@@ -165,10 +165,10 @@
 - (void)stretchingSubviews {
     CGFloat y = _rootTableView.contentOffset.y + (_hasNavigationBar ? kMXNavigationBarHeight : 0);
     if (y < -_scrollViewHeight) {
-        CGRect orginFrame = self.frame;
-        orginFrame.origin.y = y;
-        orginFrame.size.height = -y;
-        [self resetSubViewsFrame:orginFrame];
+        CGRect originFrame = self.frame;
+        originFrame.origin.y = y;
+        originFrame.size.height = -y;
+        [self resetSubViewsFrame:originFrame];
     }
 }
 
@@ -319,8 +319,8 @@
     dispatch_source_set_event_handler(_timer, ^{
         if (_contents.count == 0) return;
         if (_rootTableView) {
-            CGRect orginFrame = CGRectMake(0, -_scrollViewHeight, _scrollViewWidth, _scrollViewHeight);
-            [self resetSubViewsFrame:orginFrame];
+            CGRect originFrame = CGRectMake(0, -_scrollViewHeight, _scrollViewWidth, _scrollViewHeight);
+            [self resetSubViewsFrame:originFrame];
             CGFloat navgationBarHeight = _hasNavigationBar ? kMXNavigationBarHeight : 0;
             if (_rootTableView.contentOffset.y < -_scrollViewHeight - navgationBarHeight) {
                 _rootTableView.contentOffset = CGPointMake(0, -_scrollViewHeight - navgationBarHeight);
